@@ -4,22 +4,7 @@ class Magic8Ball {
             "It is certain.",
             "It is decidedly so.",
             "Without a doubt.",
-            "Yes - definitely.",
-            "You may rely on it.",
-            "As I see it, yes.",
-            "Most likely.",
-            "Outlook good.",
-            "Yes.",
-            "Signs point to yes.",
-            "Reply hazy, try again.",
-            "Ask again later.",
-            "Better not tell you now.",
-            "Cannot predict now.",
-            "Concentrate and ask again.",
-            "Don't count on it.",
-            "My reply is no.",
-            "My sources say no.",
-            "Outlook not so good.",
+            // ... (other responses)
             "Very doubtful."
         ];
     }
@@ -34,9 +19,25 @@ document.addEventListener('DOMContentLoaded', () => {
     const magic8Ball = new Magic8Ball();
     const askButton = document.getElementById('askButton');
     const responseDiv = document.getElementById('response');
+    const magicBallDiv = document.getElementById('magicBall');
+    const soundEffect = new Audio('assets/audio/Shaking.wav');
 
     askButton.addEventListener('click', () => {
         const response = magic8Ball.askQuestion();
         responseDiv.textContent = response;
+
+        // Play sound effect
+        soundEffect.play();
+
+        // Add animation to the Magic 8 Ball
+        magicBallDiv.classList.add('shake');
+
+        // Clear animation class after a delay
+        setTimeout(() => {
+            magicBallDiv.classList.remove('shake');
+        }, 800); // Duration of the shake animation
+
+        // Show response with fadeIn animation
+        responseDiv.classList.add('show');
     });
 });
