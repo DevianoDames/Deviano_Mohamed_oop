@@ -1,11 +1,26 @@
 class Magic8Ball {
     constructor() {
         this.responses = [
-            "It is certain.",
-            "It is decidedly so.",
-            "Without a doubt.",
-            // ... (other responses)
-            "Very doubtful."
+            "Yes",
+            "No",
+            "Maybe",
+            "Ask again later",
+            "Cannot predict now",
+            "Concentrate and ask again",
+            "Don't count on it",
+            "My sources say no",
+            "Outlook not so good",
+            "Very doubtful",
+            "Signs point to yes",
+            "Definitely not",
+            "Without a doubt",
+            "Reply hazy, try again",
+            "Better not tell you now",
+            "Outlook good",
+            "As I see it, yes",
+            "Most likely",
+            "Yes, definitely",
+            "My reply is no"
         ];
         this.images = [
             "assets/images/Magic_eight_ball_1.svg",
