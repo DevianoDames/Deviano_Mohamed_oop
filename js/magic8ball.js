@@ -56,7 +56,7 @@ class Magic8Ball {
     }
 }
 
-document.addEventListener('DOMContentLoaded', () => {
+window.addEventListener('load', () => {
     const magic8Ball = new Magic8Ball();
     const magicBallImage = document.getElementById('magicBallImage');
     const responseDiv = document.getElementById('response');
@@ -68,6 +68,7 @@ document.addEventListener('DOMContentLoaded', () => {
     magicBallImage.addEventListener('click', () => {
         // Clear previous response and animation class
         responseDiv.textContent = "";
+        responseDiv.classList.remove('show'); // Remove 'show' class for re-triggering animation
         magicBallImage.parentElement.classList.remove('shake');
 
         // Play sound effect
@@ -84,9 +85,11 @@ document.addEventListener('DOMContentLoaded', () => {
             magicBallImage.parentElement.classList.remove('shake');
         }, 800); // Duration of the shake animation
 
-        // Show response with fadeIn animation
-        responseDiv.textContent = magic8Ball.askQuestion();
-        responseDiv.classList.add('show');
+        // Show response with fadeIn animation after a delay
+        setTimeout(() => {
+            responseDiv.textContent = magic8Ball.askQuestion();
+            responseDiv.classList.add('show');
+        }, 1000); // Delay before applying the fadeIn animation
     });
 
     // Reset the image to the original one on page refresh
