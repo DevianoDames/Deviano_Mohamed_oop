@@ -48,10 +48,10 @@ class Magic8Ball {
     toggleImage() {
         if (!this.imageToggled) {
             this.imageToggled = true;
-            this.currentImageIndex = 1; // Switch to Magic_eight_ball.svg
+            this.currentImageIndex = 1; 
             return this.images[this.currentImageIndex];
         } else {
-            return this.images[1]; // Always return the second image after the first toggle
+            return this.images[1]; 
         }
     }
 }
@@ -62,37 +62,36 @@ window.addEventListener('load', () => {
     const responseDiv = document.getElementById('response');
     const soundEffect = new Audio('assets/audio/Shaking.wav');
 
-    // Set the initial image
+    
     magicBallImage.src = magic8Ball.resetImage();
 
     magicBallImage.addEventListener('click', () => {
-        // Clear previous response and animation class
+        
         responseDiv.textContent = "";
-        responseDiv.classList.remove('show'); // Remove 'show' class for re-triggering animation
+        responseDiv.classList.remove('show'); 
         magicBallImage.parentElement.classList.remove('shake');
 
-        // Play sound effect
         soundEffect.play();
 
-        // Change magic 8 ball image
+        
         magicBallImage.src = magic8Ball.toggleImage();
 
-        // Add animation to the Magic 8 Ball
+        
         magicBallImage.parentElement.classList.add('shake');
 
-        // Clear animation class after a delay
+        
         setTimeout(() => {
             magicBallImage.parentElement.classList.remove('shake');
-        }, 800); // Duration of the shake animation
+        }, 800); 
 
         // Show response with fadeIn animation after a delay
         setTimeout(() => {
             responseDiv.textContent = magic8Ball.askQuestion();
             responseDiv.classList.add('show');
-        }, 1000); // Delay before applying the fadeIn animation
+        }, 1000); 
     });
 
-    // Reset the image to the original one on page refresh
+    
     window.addEventListener('beforeunload', () => {
         magicBallImage.src = magic8Ball.resetImage();
     });
